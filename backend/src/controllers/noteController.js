@@ -3,7 +3,8 @@ const Note = require("../models/notes.model")
 // create a note
 async function createNote(req, res){
     try{
-        const newNote = new Note(req.body)
+        const noteData = { ...req.body, user: req.user.id }
+        const newNote = new Note(noteData)
         const savedNote = await newNote.save();
         res.status(201).json({ message: "Success", savedNote })
     }
@@ -15,7 +16,7 @@ async function createNote(req, res){
 // Get all notes
 async function getAllNotes(req, res){
     try{
-        const notes = await Note.find();
+        const notes = await Note.find({ user: req.user.id });
         res.status(200).json({notes})
     }
     catch( error ){
@@ -28,7 +29,14 @@ async function updateNotes(req, res){
     try{
         const id = req.params.id;
         const updateData = req.body;
-        const updatedNote = await Note.findByIdAndUpdate(id, updateData, {new : true});
+        const updatedNote = await Note.findOneAndUpdate(
+            { _id: id, user: req.user.id }, 
+            updateData, 
+            { new: true }
+        );
+        if (!updatedNote) {
+            return res.status(404).json({ message: "Note not found or unauthorized" });
+        }
         res.status(200).json(updatedNote)
     }
     catch( error ){
@@ -39,7 +47,10 @@ async function updateNotes(req, res){
 // delete note
 async function deleteNote(req,res){
     try{
-        await Note.findByIdAndDelete(req.params.id);
+        const deletedNote = await Note.findOneAndDelete({ _id: req.params.id, user: req.user.id });
+        if (!deletedNote) {
+            return res.status(404).json({ message: "Note not found or unauthorized" });
+        }
         res.status(200).json({ message: "Note deleted successfully" });
     }
     catch(err){

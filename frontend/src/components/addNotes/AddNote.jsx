@@ -15,19 +15,26 @@ const AddNote = ({ onClose, note, onSuccess }) => {
     try {
       const noteData = { title, desc, link }
 
+      const token = localStorage.getItem("token");
       let response
       if (note?._id) {
         // Update existing note
-        response = await fetch(`http://localhost:9000/api/notes/${note._id}`, {
+        response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/notes/${note._id}`, {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          headers: { 
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
           body: JSON.stringify(noteData),
         })
       } else {
         // Create new note
-        response = await fetch("http://localhost:9000/api/notes", {
+        response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/notes`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { 
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
           body: JSON.stringify(noteData),
         })
       }
@@ -47,12 +54,12 @@ const AddNote = ({ onClose, note, onSuccess }) => {
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
-      <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl">
-        <h2 className="text-2xl font-bold text-white mb-6">
+      <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-2xl p-5 sm:p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
+        <h2 className="text-xl sm:text-2xl font-bold text-white mb-5 sm:mb-6">
           {note ? "Edit Note" : "Add New Note"}
         </h2>
 
-        {error && <p className="text-red-500 mb-4">{error}</p>}
+        {error && <p className="text-red-500 mb-4 text-sm">{error}</p>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -63,7 +70,7 @@ const AddNote = ({ onClose, note, onSuccess }) => {
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Enter note title"
               required
-              className="w-full bg-zinc-800 text-white px-4 py-3 rounded-xl outline-none border border-zinc-700 focus:border-blue-500"
+              className="w-full bg-zinc-800 text-white px-4 py-3 rounded-xl outline-none border border-zinc-700 focus:border-blue-500 text-sm sm:text-base transition-colors"
             />
           </div>
 
@@ -75,7 +82,7 @@ const AddNote = ({ onClose, note, onSuccess }) => {
               onChange={(e) => setDesc(e.target.value)}
               placeholder="Write your note description"
               required
-              className="w-full bg-zinc-800 text-white px-4 py-3 rounded-xl outline-none border border-zinc-700 focus:border-blue-500 resize-none"
+              className="w-full bg-zinc-800 text-white px-4 py-3 rounded-xl outline-none border border-zinc-700 focus:border-blue-500 resize-none text-sm sm:text-base transition-colors"
             />
           </div>
 
@@ -86,16 +93,16 @@ const AddNote = ({ onClose, note, onSuccess }) => {
               value={link}
               onChange={(e) => setLink(e.target.value)}
               placeholder="https://example.com"
-              className="w-full bg-zinc-800 text-white px-4 py-3 rounded-xl outline-none border border-zinc-700 focus:border-blue-500"
+              className="w-full bg-zinc-800 text-white px-4 py-3 rounded-xl outline-none border border-zinc-700 focus:border-blue-500 text-sm sm:text-base transition-colors"
             />
           </div>
 
           {/* Buttons */}
-          <div className="flex gap-3 pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 pt-4">
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-blue-500 hover:bg-blue-600 disabled:bg-blue-400 text-white py-3 rounded-xl font-semibold transition duration-300"
+              className="w-full sm:flex-1 bg-blue-500 hover:bg-blue-600 disabled:bg-blue-400 text-white py-3 rounded-xl font-semibold transition duration-300 text-sm sm:text-base order-1 sm:order-2"
             >
               {loading ? "Saving..." : note ? "Save Changes" : "Add Note"}
             </button>
@@ -103,7 +110,7 @@ const AddNote = ({ onClose, note, onSuccess }) => {
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 bg-zinc-700 hover:bg-zinc-600 text-white py-3 rounded-xl font-semibold transition duration-300"
+              className="w-full sm:flex-1 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white py-3 rounded-xl font-semibold transition duration-300 text-sm sm:text-base order-2 sm:order-1"
             >
               Cancel
             </button>

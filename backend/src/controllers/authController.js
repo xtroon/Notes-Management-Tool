@@ -5,10 +5,10 @@ const { generateToken } = require("../utils/jwt")
 // SIGNUP functionality
 async function signup(req, res) {
     try {
-        const { name, email, password } = req.body
-
+        const { username, email, password } = req.body
+        console.log(req.body);
         // Validate input
-        if (!name || !email || !password) {
+        if (!username || !email || !password) {
             return res.status(400).json({ success: false, message: "All fields are required" })
         }
 
@@ -23,7 +23,7 @@ async function signup(req, res) {
 
         // Create new user
         const newUser = new User({
-            name,
+            username,
             email: email.toLowerCase(),
             password: hashedPassword
         })
@@ -39,7 +39,7 @@ async function signup(req, res) {
             token,
             user: {
                 _id: savedUser._id,
-                name: savedUser.name,
+                username: savedUser.username,
                 email: savedUser.email,
             },
         })
@@ -80,7 +80,7 @@ async function login(req, res) {
             token,
             user: {
                 _id: user._id,
-                name: user.name,
+                username: user.username,
                 email: user.email,
             },
         })
