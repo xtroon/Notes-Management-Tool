@@ -19,7 +19,7 @@ const AddNote = ({ onClose, note, onSuccess }) => {
       let response
       if (note?._id) {
         // Update existing note
-        response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/notes/${note._id}`, {
+        response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notes/${note._id}`, {
           method: "PUT",
           headers: { 
             "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const AddNote = ({ onClose, note, onSuccess }) => {
         })
       } else {
         // Create new note
-        response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/notes`, {
+        response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notes`, {
           method: "POST",
           headers: { 
             "Content-Type": "application/json",
