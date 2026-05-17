@@ -19,7 +19,7 @@ const Dashboard = () => {
   const fetchNotes = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/notes`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notes`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -41,7 +41,7 @@ const Dashboard = () => {
   const handleDelete = async (noteId) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/notes/${noteId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notes/${noteId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`
