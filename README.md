@@ -1,7 +1,4 @@
 <div align="center">
-  <img src="assets/homepage.png" alt="Homepage view" width="48%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); margin-right: 2%;"/>
-  <img src="assets/dashboard.png" alt="Dashboard view" width="48%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);"/>
-  <br/><br/>
   <h1>📝 Notes Management Tool</h1>
   <p><strong>A full-stack, secure, and intuitive web application to capture, organize, and manage your thoughts.</strong></p>
   
@@ -41,6 +38,23 @@
 - **Node.js & Express** - Powerful and scalable backend framework.
 - **MongoDB & Mongoose** - Flexible NoSQL database for storing users and notes.
 - **JWT & Bcryptjs** - Industry-standard security and authentication.
+
+## 📸 Screenshots
+
+<div align="center">
+  <img src="assets/homepage.png" alt="Homepage view" width="48%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); margin-right: 2%;"/>
+  <img src="assets/dashboard.png" alt="Dashboard view" width="48%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);"/>
+  <br/>
+  <i>(Left: Login & Registration | Right: Main Notes Dashboard)</i>
+</div>
+
+## 🏗️ Architecture & Data Flow
+
+1. **Client Request:** User interacts with the React frontend (built with Vite).
+2. **API Call:** Axios/Fetch sends RESTful requests to the Node.js/Express backend.
+3. **Authentication:** Express middleware verifies JWT tokens for protected routes (like adding or deleting a note).
+4. **Database Operation:** Mongoose models query or mutate data inside the MongoDB cluster.
+5. **Response:** Backend returns standard JSON responses which React state updates to reflect instantly on the UI.
 
 ## 🚀 Getting Started
 
@@ -85,6 +99,13 @@ npm run dev
 ```
 
 Your app will now be running on `http://localhost:5173/`!
+
+## 🔮 Future Improvements
+
+- [ ] **Rich Text Editing:** Upgrade the note editor to support bold, italics, lists, and markdown.
+- [ ] **Categories & Tags:** Allow users to organize notes by custom color-coded categories.
+- [ ] **Search & Filter:** Implement a global search bar to quickly find specific notes.
+- [ ] **Collaborative Notes:** Real-time note sharing and editing using WebSockets (Socket.io).
 
 ## 🌐 Deployment
 This project is production-ready.
