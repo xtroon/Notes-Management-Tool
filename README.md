@@ -62,7 +62,7 @@ Follow these instructions to run the project locally on your machine.
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/ometiwari-ai/Notes-Management-Tool.git
+git clone https://github.com/xtroon/Notes-Management-Tool.git
 cd Notes-Management-Tool
 ```
 
