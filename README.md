@@ -1,8 +1,15 @@
 <div align="center">
-  <img src="assets/banner.png" alt="Notes Management Tool Banner" width="100%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);"/>
+  <img src="assets/homepage.png" alt="Homepage view" width="48%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); margin-right: 2%;"/>
+  <img src="assets/dashboard.png" alt="Dashboard view" width="48%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);"/>
   <br/><br/>
   <h1>📝 Notes Management Tool</h1>
   <p><strong>A full-stack, secure, and intuitive web application to capture, organize, and manage your thoughts.</strong></p>
+  
+  <p>
+    <a href="https://notes-management-tool.vercel.app/" target="_blank">
+      <img src="https://img.shields.io/badge/Live_Demo-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+    </a>
+  </p>
   
   <p>
     <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" /></a>
