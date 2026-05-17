@@ -42,7 +42,7 @@
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="assets/homepage.png" alt="Homepage view" width="48%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); margin-right: 2%;"/>
+  <img src="assets/signup.png" alt="Homepage view" width="48%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); margin-right: 2%;"/>
   <img src="assets/dashboard.png" alt="Dashboard view" width="48%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);"/>
   <br/>
   <i>(Left: Login & Registration | Right: Main Notes Dashboard)</i>
