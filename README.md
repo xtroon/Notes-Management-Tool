@@ -51,7 +51,7 @@
 ## 🏗️ Architecture & Data Flow
 
 1. **Client Request:** User interacts with the React frontend (built with Vite).
-2. **API Call:** Axios/Fetch sends RESTful requests to the Node.js/Express backend.
+2. **API Call:** Native Fetch API sends RESTful requests to the Node.js/Express backend.
 3. **Authentication:** Express middleware verifies JWT tokens for protected routes (like adding or deleting a note).
 4. **Database Operation:** Mongoose models query or mutate data inside the MongoDB cluster.
 5. **Response:** Backend returns standard JSON responses which React state updates to reflect instantly on the UI.
